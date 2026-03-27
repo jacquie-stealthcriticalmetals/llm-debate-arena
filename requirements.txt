@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+openai
+anthropic
+google-genai
+python-dotenv

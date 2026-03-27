@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Debate Arena</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <h1>LLM Debate Arena</h1>
+        <button id="settings-toggle" class="btn btn-secondary">Settings</button>
+    </header>
+
+    <!-- Settings Panel -->
+    <div id="settings-panel" class="panel hidden">
+        <h2>API Keys</h2>
+        <div class="key-group">
+            <label>OpenAI <span id="status-openai" class="status-dot"></span></label>
+            <input type="password" id="key-openai" placeholder="sk-...">
+        </div>
+        <div class="key-group">
+            <label>Anthropic <span id="status-anthropic" class="status-dot"></span></label>
+            <input type="password" id="key-anthropic" placeholder="sk-ant-...">
+        </div>
+        <div class="key-group">
+            <label>Google <span id="status-google" class="status-dot"></span></label>
+            <input type="password" id="key-google" placeholder="AI...">
+        </div>
+        <button id="save-keys" class="btn btn-primary">Save Keys</button>
+    </div>
+
+    <!-- Main Form -->
+    <div id="prompt-section" class="panel">
+        <h2>Start a Debate</h2>
+        <div id="model-selection">
+            <h3>Select Models</h3>
+            <div id="model-checkboxes"></div>
+        </div>
+        <div class="form-group">
+            <label for="prompt-input">Prompt</label>
+            <textarea id="prompt-input" rows="4" placeholder="Ask a debatable question..."></textarea>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="timeout-input">Timeout (minutes)</label>
+                <input type="number" id="timeout-input" value="10" min="1" max="60">
+            </div>
+            <button id="start-debate" class="btn btn-primary btn-large">Start Debate</button>
+        </div>
+    </div>
+
+    <!-- Debate View -->
+    <div id="debate-section" class="hidden">
+        <div id="debate-header">
+            <h2>Debate in Progress</h2>
+            <div id="debate-controls">
+                <span id="debate-status" class="status-badge">Running</span>
+                <span id="debate-timer"></span>
+                <button id="stop-debate" class="btn btn-danger">Stop</button>
+                <button id="export-debate" class="btn btn-secondary" disabled>Export .md</button>
+            </div>
+        </div>
+        <div id="debate-columns"></div>
+
+        <!-- Consensus Banner -->
+        <div id="consensus-banner" class="hidden">
+            <h3>Consensus Reached</h3>
+            <div id="consensus-content"></div>
+        </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>

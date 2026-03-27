@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pip list:*)",
+      "Bash(python -c \"import ast; import pathlib; [ast.parse\\(f.read_text\\(\\)\\) for f in pathlib.Path\\(''backend''\\).glob\\(''*.py''\\)]; ast.parse\\(pathlib.Path\\(''main.py''\\).read_text\\(\\)\\); print\\(''All Python files parse OK''\\)\")",
+      "Bash(pip install:*)",
+      "Bash(where python:*)",
+      "Bash(python -m pip install -r requirements.txt)",
+      "Bash(python -c \"from backend.routes import router; from backend.debate import create_session; print\\(''All imports OK''\\)\")",
+      "Bash(gh auth:*)",
+      "Bash(where gh:*)",
+      "Bash(where git:*)"
+    ]
+  }
+}
