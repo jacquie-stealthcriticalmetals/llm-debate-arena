@@ -27,4 +27,8 @@ This is a local web app (FastAPI + vanilla HTML/JS) that sends a single prompt t
 **Frontend (`frontend/`)** — No build step, served as static files:
 - `app.js` — Connects to SSE endpoint via `EventSource`, renders responses into per-model columns in real-time.
 
+## API Cost Model
+
+This app uses API keys billed per token — **not** the ChatGPT Plus / Claude Pro / Gemini Advanced subscription UIs (those don't expose a programmable API). Costs compound per debate round because each model receives the full conversation history as context. A 5-round, 3-model debate can consume 50k–100k tokens. Cheapest models: `gpt-4o-mini`, `claude-haiku-4-20250514`, `gemini-2.0-flash`.
+
 **Data flow:** `POST /api/debate/start` → creates `DebateSession` → `asyncio.create_task(run_debate())` → events pushed to `asyncio.Queue` → `GET /api/debate/{id}/stream` reads queue as SSE → frontend `EventSource` renders events.

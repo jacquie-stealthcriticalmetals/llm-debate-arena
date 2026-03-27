@@ -39,6 +39,14 @@ Keys are stored locally in a `.env` file and never leave your machine. You need 
 | Anthropic | `sk-ant-...` | console.anthropic.com |
 | Google | `AI...` | aistudio.google.com |
 
+## API Cost Warning
+
+This app uses API keys, which are **billed per token** — separate from any ChatGPT Plus, Claude Pro, or Gemini Advanced subscriptions you may already have. Those subscription UIs don't expose a programmable API, so this app cannot use them.
+
+Costs compound quickly because each debate round sends the entire conversation history to every model. A 5-round debate with 3 mid-tier models can use 50,000–100,000 tokens (~$0.10–$0.50). Heavy models (GPT-4o, Claude Opus) can reach $1–5+ per debate.
+
+**To minimize costs:** prefer cheaper models — `gpt-4o-mini`, `claude-haiku-4-20250514`, `gemini-2.0-flash` — and keep the round limit low.
+
 ## Tech Stack
 
 - **Backend:** Python, FastAPI, uvicorn
